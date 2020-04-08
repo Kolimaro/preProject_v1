@@ -38,5 +38,8 @@
         </tr>
     </c:forEach>
 </table>
+<form action="/add" method="get">
+    <button type="submit">Add new user</button>
+</form>
 </body>
 </html>
