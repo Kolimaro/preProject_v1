@@ -1,6 +1,8 @@
 package service;
 
 import dao.UserDAO;
+import dao.UserHibernateDAO;
+import dao.UserJdbcDAO;
 import exception.DBException;
 import model.User;
 
@@ -12,7 +14,7 @@ public class UserService {
     private UserDAO dao;
 
     public UserService() {
-        dao = new UserDAO();
+        dao = new UserHibernateDAO();
     }
 
     public List<User> getAllUsers() throws DBException {
@@ -43,7 +45,7 @@ public class UserService {
 
     public void deleteUser(Long id) throws DBException {
         try {
-            dao.deleteUser(id);
+            dao.deleteUser(dao.getUserById(id));
         } catch (SQLException e) {
             throw new DBException(e);
         }
