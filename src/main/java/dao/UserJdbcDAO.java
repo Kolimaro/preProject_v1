@@ -1,7 +1,7 @@
 package dao;
 
 import model.User;
-import util.DBConnection;
+import util.DBHelper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class UserJdbcDAO implements UserDAO {
     private Connection connection;
 
     public UserJdbcDAO() {
-        connection = DBConnection.getConnection();
+        connection = DBHelper.getConnection();
     }
 
     public List<User> getAllUsers() throws SQLException {

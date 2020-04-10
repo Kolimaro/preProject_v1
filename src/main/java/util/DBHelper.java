@@ -1,20 +1,17 @@
 package util;
 
 import model.User;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnection {
+public class DBHelper {
     private static Connection connection = null;
-    private static SessionFactory sessionFactory = null;
+    private static Configuration configuration = null;
 
-    private DBConnection() {
+    private DBHelper() {
     }
 
     public static Connection getConnection() {
@@ -40,9 +37,9 @@ public class DBConnection {
         return connection;
     }
 
-    public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            Configuration configuration = new Configuration();
+    public static Configuration getConfiguration() {
+        if (configuration == null) {
+            configuration = new Configuration();
             configuration.addAnnotatedClass(User.class);
             configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
             configuration.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
@@ -51,12 +48,9 @@ public class DBConnection {
             configuration.setProperty("hibernate.connection.password", "root");
             configuration.setProperty("hibernate.show_sql", "true");
             configuration.setProperty("hibernate.hbm2ddl.auto", "update");
-            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
-            builder.applySettings(configuration.getProperties());
-            ServiceRegistry serviceRegistry = builder.build();
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
             System.out.println("connected");
         }
-        return sessionFactory;
+        return configuration;
     }
 }

@@ -23,7 +23,7 @@ public class UpdateUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserService userService = new UserService();
+        UserService userService = UserService.getInstance();
 
         long id = Long.parseLong(req.getParameter("id"));
         String firstName = req.getParameter("firstname");

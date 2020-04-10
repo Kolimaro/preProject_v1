@@ -4,16 +4,22 @@ import model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import util.DBConnection;
+import util.DBHelper;
 
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO {
-    private SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory = null;
 
     public UserHibernateDAO() {
-        sessionFactory = DBConnection.getSessionFactory();
+        if (sessionFactory == null) {
+            Configuration configuration = DBHelper.getConfiguration();
+            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+            sessionFactory = configuration.buildSessionFactory(builder.applySettings(configuration.getProperties()).build());
+        }
     }
 
     @Override

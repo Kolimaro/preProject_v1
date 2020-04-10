@@ -23,7 +23,7 @@ public class AddUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserService userService = new UserService();
+        UserService userService = UserService.getInstance();
         String firstName = req.getParameter("firstname");
         String lastName = req.getParameter("lastname");
         try {
