@@ -13,7 +13,7 @@ public class UserService {
     private UserDAO dao;
 
     private UserService() {
-        dao = UserDaoFactory.getUserDAO();
+        dao = UserDaoFactory.getInstance().getUserDAO();
     }
 
     public static UserService getInstance() {
