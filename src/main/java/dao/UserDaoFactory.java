@@ -14,7 +14,7 @@ public class UserDaoFactory {
         properties = new Properties();
 
         try {
-            properties.load(new FileInputStream("C:\\Java\\JM\\preProjectTest\\src\\main\\resources\\dao.properties"));
+            properties.load(getClass().getClassLoader().getResourceAsStream("/dao.properties"));
             String daotype = properties.getProperty("daotype");
             userDAO = (UserDAO) Class.forName(daotype).newInstance();
         } catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
