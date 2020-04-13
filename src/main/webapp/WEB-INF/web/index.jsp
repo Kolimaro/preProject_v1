@@ -15,15 +15,17 @@
 
 <table>
     <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Login</th>
+        <th>Password</th>
     </tr>
 
     <tr>
-        <form action="/add" method="post">
-            <td><input required type="text" name="firstname" placeholder="new name"></td>
-            <td><input required type="text" name="lastname" placeholder="new last name"></td>
-            <td><button type="submit">Add user</button></td>
+        <form action="/login" method="post">
+            <td><input required type="text" name="login" placeholder="login"></td>
+            <td><input required type="text" name="password" placeholder="password"></td>
+            <td>
+                <button type="submit">Sign in</button>
+            </td>
         </form>
     </tr>
 

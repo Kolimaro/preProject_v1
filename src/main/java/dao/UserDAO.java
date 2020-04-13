@@ -2,22 +2,25 @@ package dao;
 
 import model.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDAO {
 
-    List<User> getAllUsers() throws SQLException;
+    List<User> getAllUsers();
 
-    User getUserById(Long id) throws SQLException;
+    User getUserById(Long id);
 
-    void addUser(User user) throws SQLException;
+    void addUser(User user);
 
-    void editUser(User user) throws SQLException;
+    void editUser(User user);
 
-    void deleteUser(User user) throws SQLException;
+    void deleteUser(User user);
 
-    default void createTable() throws SQLException {}
+    User getUserByLogin(String login);
 
-    default void dropTable() throws SQLException {}
+    default void createTable() {
+    }
+
+    default void dropTable() {
+    }
 }

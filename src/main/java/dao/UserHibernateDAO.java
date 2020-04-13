@@ -40,6 +40,16 @@ public class UserHibernateDAO implements UserDAO {
     }
 
     @Override
+    public User getUserByLogin(String login) {
+        Session session = sessionFactory.openSession();
+        Query<User> query = session.createQuery("SELECT u FROM User u WHERE u.login = :u_login", User.class);
+        query.setParameter("u_login", login);
+        User user = query.getSingleResult();
+        session.close();
+        return user;
+    }
+
+    @Override
     public void addUser(User user) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
