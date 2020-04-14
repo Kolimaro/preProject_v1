@@ -21,7 +21,7 @@ public class UserServlet extends HttpServlet {
 
         User user = userService.getUserById(id);
         req.setAttribute("user", user);
-        req.getServletContext().getRequestDispatcher("/user.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher("/WEB-INF/web/user.jsp").forward(req, resp);
 
     }
 }

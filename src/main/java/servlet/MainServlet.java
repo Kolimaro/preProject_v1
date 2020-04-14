@@ -23,7 +23,7 @@ public class MainServlet extends HttpServlet {
         List<User> users = userService.getAllUsers();
         req.setAttribute("usersFromDB", users);
 
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/allUsers.jsp");
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/WEB-INF/web/allUsers.jsp");
         dispatcher.forward(req, resp);
     }
 

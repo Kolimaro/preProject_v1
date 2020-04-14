@@ -16,7 +16,7 @@ import java.util.List;
 public class AddUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/addUser.jsp");
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/WEB-INF/web/addUser.jsp");
         dispatcher.forward(req, resp);
     }
 
@@ -33,7 +33,7 @@ public class AddUserServlet extends HttpServlet {
         List<User> users = userService.getAllUsers();
         req.setAttribute("usersFromDB", users);
 
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/allUsers.jsp");
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/WEB-INF/web/allUsers.jsp");
         dispatcher.forward(req, resp);
     }
 }
